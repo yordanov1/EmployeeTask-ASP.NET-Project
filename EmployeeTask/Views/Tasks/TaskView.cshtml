@@ -1,0 +1,45 @@
+﻿@model TaskFormModel
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <h2 class="heading-margin text-center text-danger">Task</h2>
+            <h3 class="heading-margin text-center text-danger">-----------------------------------------------</h3>
+
+            @if(Model.IsCompleted == true)
+            {
+                <h2 class="heading-margin text-center text-success">Complited</h2>
+            }
+
+            @if(Model.IsCompleted == false)
+            {
+                 <h2 class="heading-margin text-center text-danger">Not Complited</h2>
+            }
+                                                         
+            <div class="form-group">
+                <label asp-for="@Model.Title"></label> 
+                <h5>@Model.Title</h5>
+            </div>
+            <div class="mb-5"></div>
+            <div class="form-group"> 
+                <label asp-for="@Model.Description"></label>
+                <h5>@Model.Description</h5>
+            </div>
+            <div class="form-group"> 
+                <label asp-for="@Model.DueDete"></label>
+                <h5>@Model.DueDete</h5>
+            </div>
+                        
+            <div class="mb-5"></div>
+
+            <a asp-area="" asp-controller="Tasks" asp-action="Delete" asp-route-id="@Model.Id" asp-route-ide="@Model.EmployeeId" class="btn btn-danger float-right ml-3">Delete</a> 
+            <a asp-area="" asp-controller="Tasks" asp-action="EditTask" asp-route-id="@Model.Id" class="btn btn-info float-right ml-3">Edit</a>
+            <a asp-area="" asp-controller="Tasks" asp-action="Return" asp-route-id="@Model.Id" class="btn btn-warning float-right ml-3">Back</a>
+
+            <a asp-area="" asp-controller="Tasks" asp-action="Complete" asp-route-id="@Model.Id" asp-route-ide="@Model.EmployeeId" class="btn btn-success float-left ml-3">Complited</a>
+            <a asp-area="" asp-controller="Tasks" asp-action="Restart" asp-route-id="@Model.Id" asp-route-ide="@Model.EmployeeId" class="btn btn-danger float-left ml-3">Not Complited</a>
+        </form>
+    </div>
+</div>
+
+
